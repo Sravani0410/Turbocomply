@@ -3,6 +3,7 @@ const path = require('path');
 
 const dbPath = path.resolve(__dirname, '../db.json');
 
+
 function readData() {
     try {
         const data = fs.readFileSync(dbPath, 'utf8');
@@ -19,7 +20,7 @@ function readData() {
 function writeData(data) {
     fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
 }
-
+// post
 function createTrade(req, res) {
     try {
         const trades = readData();
@@ -36,7 +37,20 @@ function createTrade(req, res) {
     }
 }
 
+// get 
+function getAllTrades(req, res) {
+    try {
+        const trades = readData();
+        res.status(200).json({ trades });
+    } catch (err) {
+        console.error('Error getting all trades:', err);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+
 module.exports = {
     readData,
     createTrade,
+    getAllTrades
 };

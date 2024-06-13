@@ -12,7 +12,7 @@ app.use(logger);
 
 // routes:
 app.post('/trades', tradeController.createTrade);
-
+app.get('/trades',tradeController.getAllTrades);
 
 app.listen(PORT,()=>{
     console.log(`server is connected ${PORT}`)
