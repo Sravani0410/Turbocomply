@@ -83,11 +83,30 @@ function deleteTradeById(req, res) {
     }
 }
 
+// patch request:
+function updateTradeById(req, res) {
+    try {
+        const trades = readData();
+        const tradeIndex = trades.findIndex(trade => trade.id === parseInt(req.params.id));
+        if (tradeIndex !== -1) {
+            trades[tradeIndex].price = req.body.price;
+            writeData(trades);
+            res.sendStatus(200);
+        } else {
+            res.status(404).send('ID not found');
+        }
+    } catch (err) {
+        console.error('Error updating trade by ID:', err);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
 
 module.exports = {
     readData,
     createTrade,
     getAllTrades,
     getTradeById,
-    deleteTradeById
+    deleteTradeById,
+    updateTradeById
 };

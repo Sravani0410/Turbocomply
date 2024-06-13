@@ -15,6 +15,7 @@ app.post('/trades', tradeController.createTrade);
 app.get('/trades',tradeController.getAllTrades);
 app.get('/trades/:id',tradeController.getTradeById)
 app.delete('/trades/:id', tradeController.deleteTradeById);
+app.patch('/trades/:id',tradeController.updateTradeById)
 
 app.listen(PORT,()=>{
     console.log(`server is connected ${PORT}`)
