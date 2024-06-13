@@ -20,6 +20,7 @@ function readData() {
 function writeData(data) {
     fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
 }
+
 // post
 function createTrade(req, res) {
     try {
@@ -48,9 +49,25 @@ function getAllTrades(req, res) {
     }
 }
 
+// get by id
+function getTradeById(req, res) {
+    try {
+        const trades = readData();
+        const trade = trades.find(trade => trade.id === parseInt(req.params.id));
+        if (trade) {
+            res.status(200).json(trade);
+        } else {
+            res.status(404).send('ID not found');
+        }
+    } catch (err) {
+        console.error('Error getting trade by ID:', err);
+        res.status(500).send('Internal Server Error');
+    }
+}
 
 module.exports = {
     readData,
     createTrade,
-    getAllTrades
+    getAllTrades,
+    getTradeById
 };
