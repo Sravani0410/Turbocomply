@@ -6,5 +6,21 @@
     "symbol": "ABX",
     "shares": 30,
     "price": 138
+  },
+  {
+    "id": 2,
+    "type": "sell",
+    "user_id": 45,
+    "symbol": "XYZ",
+    "shares": 20,
+    "price": 120
+  },
+  {
+    "id": 4,
+    "type": "sell",
+    "user_id": 56,
+    "symbol": "GOOG",
+    "shares": 15,
+    "price": 1050
   }
 ]
