@@ -65,9 +65,29 @@ function getTradeById(req, res) {
     }
 }
 
+// delete
+function deleteTradeById(req, res) {
+    try {
+        const trades = readData();
+        const tradeIndex = trades.findIndex(trade => trade.id === parseInt(req.params.id));
+        if (tradeIndex !== -1) {
+            trades.splice(tradeIndex, 1);
+            writeData(trades);
+            res.sendStatus(200);
+        } else {
+            res.status(404).send('ID not found');
+        }
+    } catch (err) {
+        console.error('Error deleting trade by ID:', err);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+
 module.exports = {
     readData,
     createTrade,
     getAllTrades,
-    getTradeById
+    getTradeById,
+    deleteTradeById
 };
