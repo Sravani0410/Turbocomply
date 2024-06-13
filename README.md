@@ -17,11 +17,6 @@ Backend
 Backend: [Live Demo](https://turbocomply.vercel.app/)
 
 
-## Video Walkthrough of the Project
-
-[Video Walkthrough](https://drive.google.com/file/d/1fuqOIrV_oycnCpX4caWbC9zMigpaow6P/view?usp=sharing)
-
-
 ## Features and Test by using this Links
 **CRUD  operation:** 
   **Create:**
